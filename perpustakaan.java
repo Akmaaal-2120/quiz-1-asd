@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 class Perpustakaan {
-    static Buku[] bukuList = new Buku[5];
-    static Mahasiswa[] mahasiswaList = new Mahasiswa[2];
+    static Buku[] bukuArray = new Buku[5];
+    static Mahasiswa[] mahasiswaArray = new Mahasiswa[2];
     static int bukuCount = 0, mahasiswaCount = 0;
     
     static void tambahBuku(Scanner sc) {
@@ -14,7 +14,7 @@ class Perpustakaan {
             String judul = sc.nextLine();
             System.out.print("Masukkan penulis: ");
             String penulis = sc.nextLine();
-            bukuList[bukuCount++] = new Buku(kode, judul, penulis);
+            bukuArray[bukuCount++] = new Buku(kode, judul, penulis);
             System.out.println("Buku berhasil ditambahkan!");
         } else {
             System.out.println("Koleksi buku penuh!");
@@ -28,7 +28,7 @@ class Perpustakaan {
             System.out.print("Masukkan nama mahasiswa: ");
             sc.nextLine();
             String nama = sc.nextLine();
-            mahasiswaList[mahasiswaCount++] = new Mahasiswa(nim, nama);
+            mahasiswaArray[mahasiswaCount++] = new Mahasiswa(nim, nama);
             System.out.println("Mahasiswa berhasil ditambahkan!");
         } else {
             System.out.println("Jumlah mahasiswa penuh!");
@@ -80,8 +80,8 @@ class Perpustakaan {
     static void tampilkanPeminjaman() {
         boolean adaPeminjaman = false;
         System.out.println("\nDaftar Peminjaman:");
-        for (int i = 0; i < mahasiswaList.length; i++) {
-            Mahasiswa m = mahasiswaList[i];
+        for (int i = 0; i < mahasiswaArray.length; i++) {
+            Mahasiswa m = mahasiswaArray[i];
             if (m != null && m.jumlahDipinjam > 0) {
                 System.out.println("Mahasiswa: " + m.nama + " (" + m.nim + ")");
                 adaPeminjaman = true;
@@ -99,15 +99,15 @@ class Perpustakaan {
     }
     
     static Mahasiswa cariMahasiswa(String nim) {
-        for (int i = 0; i < mahasiswaList.length; i++) {
-            if (mahasiswaList[i] != null && mahasiswaList[i].nim.equals(nim)) return mahasiswaList[i];
+        for (int i = 0; i < mahasiswaArray.length; i++) {
+            if (mahasiswaArray[i] != null && mahasiswaArray[i].nim.equals(nim)) return mahasiswaArray[i];
         }
         return null;
     }
     
     static Buku cariBuku(String kode) {
-        for (int i = 0; i < bukuList.length; i++) {
-            if (bukuList[i] != null && bukuList[i].kode.equals(kode)) return bukuList[i];
+        for (int i = 0; i < bukuArray.length; i++) {
+            if (bukuArray[i] != null && bukuArray[i].kode.equals(kode)) return bukuArray[i];
         }
         return null;
     }
